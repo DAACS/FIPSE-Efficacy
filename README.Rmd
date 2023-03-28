@@ -1,0 +1,47 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# The Efficacy and Predictive Power of the Diagnostic Assessment and Achievement of College Skills on Academic Success Indicators
+
+Jason M. Bryer<sup>1</sup>, Heidi L. Andrade<sup>2</sup>, Timothy J.
+Cleary<sup>3</sup>, Angela M. Lui<sup>1</sup>, David W. Franklin
+Jr.<sup>1</sup>, and Diana Akhmedjanova<sup>2</sup>
+
+<sup>1</sup> City University of New York, New York, New York.  
+<sup>2</sup> University at Albany, State University of New York, Albany, New York   
+<sup>3</sup> Rutgers, The State University of New Jersey, New
+Brunswick, New Jersey
+
+## Abstract
+
+The purpose of this study was to examine the effects and predictive power of the Diagnostic Assessment and Achievement of College Skills (DAACS) on student success. DAACS is an open-source diagnostic assessment tool designed to measure newly enrolled college students' reading, writing, mathematics, and self-regulated learning skills, and to provide individualized feedback and learning resources that students can use to become better prepared for college. A randomized control trial was performed at two online colleges (n = 23,467) to test the effects of DAACS on credit acquisition and retention. The results showed that DAACS did not have an effect on students who only took the assessments but was helpful to students who used the feedback and resources: Students who not only took the assessments but also accessed DAACS feedback and the links to OERs were significantly more likely to earn credits and complete their first six months of coursework on time. They also had higher term-to-term retention rates than the students who only took the assessments. In addition, an examination of the predictive power of DAACS indicated that DAACS data significantly strengthen predictions of student performance.
+
+**Keywords**: college readiness, diagnostic assessment, remediation, predicting student success, developmental education
+
+**Author Note**: Correspondence concerning this article should be addressed to Jason M. Bryer, City University of New York, School of Professional Studies, 119 W 31st Street, New York, NY 10001. Email: <jason.bryer@cuny.edu>
+
+**Funding**: This work was supported by the U.S. Department of Education under Grant under grants [#P116F150077](https://www2.ed.gov/programs/fitw/awards.html) and [#R305A210269](https://ies.ed.gov/funding/grantsearch/details.asp?ID=4549). Opinions expressed herein are those of the authors and do not necessarily represent the views of the Institute or the U.S. Department of Education.
+
+**Ethics Approval and Consent**: The authors assert that approval was obtained from an ethics review board (IRB) at Excelsior College in Albany, NY, and Western Governors University in Salt Lake City, Utah. Consent was obtained from participants of the study.
+
+**Data, Materials and/or Code Availability**: Prior to publication all code used to conduct the analysis in R will be made publicly available at <https://github.com/DAACS/FIPSE-Efficacy>. Data will be made available to qualified researchers who sign a data sharing agreement.
+
+**Author Contributions**: The first three authors contributed to the study conception and design. All authors contributed to material preparation. Data collection and analysis were performed by Jason Bryer, Angela Lui, and David Franklin. All authors contributed to the writing of the first draft of the manuscript, commented on previous versions of the manuscript, and read and approved the final manuscript.
+
+## Organization
+
+* `data/` - Final data. This is available upon request.
+* `R/` - Analysis scripts.
+	* `R/DataSetup.R` - This is a shared script used for each part of the analysis. This script calculates student usage (dosage) of DAACS, creates a variable `TreatLevels` which classifies students into treatment groups by dosage, and imputes missing values using the `mice` package.
+	* `R/descriptives.R` - This script generates the descriptive statistics included in the apendicies.
+	* `R/Analysis_PSA.R` - This script runs the propenisty score anlayses.
+	* `R/Intent_to_Treat.R` - This script runs the analysis for research question one analyzing based upon intent-to-treat.
+	* `R/merge_mids.R` - This defines a function that merges the reesults of the imputation with the original dataset which includes a shadow matrix used to test the missing at random assumption.
+* `Figures/` - Generated figures.
+* `Tables/` - Generated tables.
+* `Manuscript/` - Manuscript.
+
+
