@@ -1,0 +1,7 @@
+"outcome","group","ATE_EC","gamma_EC","statistic_EC","p_EC","ATE_WGU","gamma_WGU","statistic_WGU","p_WGU"
+"On-Time Progress","Assessment + Feedback vs. Assessment Only","0.02","1.10","1.33","0.18","0.08","1.28","6.23","< 0.01"
+"On-Time Progress","Assessment + Feedback vs. Control","0.03","1.15","1.57","0.11","0.02","1.02","1.82","0.07"
+"Retention","Assessment + Feedback vs. Assessment Only","0.08","1.27","4.18","< 0.01","0.04","1.10","2.99","< 0.01"
+"Retention","Assessment + Feedback vs. Control","0.04","1.17","2.50","0.01","< 0.01","1.00","0.45","0.64"
+"Success Rate","Assessment + Feedback vs. Assessment Only","0.04","1.25","2.55","0.01","0.07","1.33","7.13","< 0.01"
+"Success Rate","Assessment + Feedback vs. Control","0.03","1.19","1.79","0.07","0.02","1.08","3.28","< 0.01"
