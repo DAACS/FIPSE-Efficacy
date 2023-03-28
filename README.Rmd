@@ -31,7 +31,7 @@ The purpose of this study was to examine the effects and predictive power of the
 
 **Author Contributions**: The first three authors contributed to the study conception and design. All authors contributed to material preparation. Data collection and analysis were performed by Jason Bryer, Angela Lui, and David Franklin. All authors contributed to the writing of the first draft of the manuscript, commented on previous versions of the manuscript, and read and approved the final manuscript.
 
-## Organization
+## Repository Structure
 
 * `data/` - Final data. This is available upon request.
 * `R/` - Analysis scripts.

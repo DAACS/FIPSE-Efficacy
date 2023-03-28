@@ -4,6 +4,7 @@ library(ggpubr)
 fig.width <- 10
 fig.height <- 5
 errorbar.cv <- 1 # Multiplier for the standard error bars.
+# https://towardsdatascience.com/why-overlapping-confidence-intervals-mean-nothing-about-statistical-significance-48360559900a
 
 # Note: This analysis script includes results of success in term 2. These were
 # not included in the final paper since we observed null results in term 1.
@@ -18,6 +19,15 @@ ec.completed.orientation <- daacs.ec$TreatLevels %in%
 	  'Feedback') # Treatment students that viewed DAACS feedback
 daacs.ec2 <- daacs.ec[ec.completed.orientation,]
 
+results_table <- data.frame(
+	outcome = character(),
+	group = character(),
+	institution = character(),
+	treatment = numeric(),
+	control = numeric(),
+	statistic = numeric(),
+	p = numeric()
+)
 
 ###### Research Question #1: Overall Effects ###################################
 ###### Null hypothesis tests                 ###################################
@@ -25,66 +35,173 @@ daacs.ec2 <- daacs.ec[ec.completed.orientation,]
 ########## EC
 # On-time progress
 # All students
-table(daacs.ec$Treat, daacs.ec$SuccessTerm1, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
+ec_all_term1_tab <- table(daacs.ec$Treat, daacs.ec$SuccessTerm1, useNA = 'ifany') |>
+	print() |> prop.table(1)
 ( chi.ec_term1 <- chisq.test(daacs.ec$Treat, daacs.ec$SuccessTerm1, correct = FALSE) )
+results_table <- rbind(results_table, data.frame(
+	outcome = 'On-Time Progress',
+	group = 'All Students',
+	institution = 'Excelsior College',
+	treatment = ec_all_term1_tab['TRUE','TRUE'],
+	control = ec_all_term1_tab['FALSE','TRUE'],
+	statistic = unname(chi.ec_term1$statistic),
+	p = chi.ec_term1$p.value
+))
+
 
 ##### Students who attended orientation
-table(daacs.ec2$Treat, daacs.ec2$SuccessTerm1, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
+ec_orientation_term1_tab <- table(daacs.ec2$Treat, daacs.ec2$SuccessTerm1, useNA = 'ifany')|>
+	print() |> prop.table(1)
 ( chi.ec2_term1 <- chisq.test(daacs.ec2$Treat, daacs.ec2$SuccessTerm1, correct = FALSE) )
+results_table <- rbind(results_table, data.frame(
+	outcome = 'On-Time Progress',
+	group = 'Students who attended orientation',
+	institution = 'Excelsior College',
+	treatment = ec_orientation_term1_tab['TRUE','TRUE'],
+	control = ec_orientation_term1_tab['FALSE','TRUE'],
+	statistic = unname(chi.ec2_term1$statistic),
+	p = chi.ec2_term1$p.value
+))
 
 
 ##### Success term 2
 # All Students
-table(daacs.ec$Treat, daacs.ec$SuccessTerm2, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
+table(daacs.ec$Treat, daacs.ec$SuccessTerm2, useNA = 'ifany')|>
+	print() |> prop.table(1)
 ( chi.ec_term2 <- chisq.test(daacs.ec$Treat, daacs.ec$SuccessTerm2, correct = FALSE) )
 
 ( ttest.ec_term1 <- t.test(CreditRatio_Term1 ~ Treat, data = daacs.ec) )
 ( ttest.ec_term2 <- t.test(CreditRatio_Term2 ~ Treat, data = daacs.ec) )
 
 # Students who attended orientation
-table(daacs.ec2$Treat, daacs.ec2$SuccessTerm2, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
+table(daacs.ec2$Treat, daacs.ec2$SuccessTerm2, useNA = 'ifany')|>
+	print() |> prop.table(1)
 ( chi.ec2_term2 <- chisq.test(daacs.ec2$Treat, daacs.ec2$SuccessTerm2, correct = FALSE) )
 
 ( ttest.ec2_term1 <- t.test(CreditRatio_Term1 ~ Treat, data = daacs.ec2) )
 ( ttest.ec2_term2 <- t.test(CreditRatio_Term2 ~ Treat, data = daacs.ec2) )
 
+results_table <- rbind(results_table, data.frame(
+	outcome = 'Success Rate',
+	group = 'All Students',
+	institution = 'Excelsior College',
+	treatment = unname(ttest.ec_term1$estimate[2]),
+	control = unname(ttest.ec_term1$estimate[1]),
+	statistic = unname(ttest.ec_term1$statistic),
+	p = ttest.ec_term1$p.value
+))
+
+results_table <- rbind(results_table, data.frame(
+	outcome = 'Success Rate',
+	group = 'Students who attended orientation',
+	institution = 'Excelsior College',
+	treatment = unname(ttest.ec2_term1$estimate[2]),
+	control = unname(ttest.ec2_term1$estimate[1]),
+	statistic = unname(ttest.ec2_term1$statistic),
+	p = ttest.ec2_term1$p.value
+))
 
 ##### Retention
 # All students
 daacs.ec$Retained <- daacs.ec$CreditsAttempted_Term2 > 0 |
 	( !is.na(daacs.ec$Time_to_Graduate) & daacs.ec$Time_to_Graduate >= 365.25 )
-table(daacs.ec$Treat, daacs.ec$CreditsAttempted_Term2 > 0, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
+ec_retention_tab <- table(daacs.ec$Treat, daacs.ec$CreditsAttempted_Term2 > 0, useNA = 'ifany')|>
+	print() |> prop.table(1)
 ( chi.ec_retention <- chisq.test(daacs.ec$Treat, 
 							   daacs.ec$Retained, 
 							   correct = FALSE) )
 
+results_table <- rbind(results_table, data.frame(
+	outcome = 'Retention',
+	group = 'All Students',
+	institution = 'Excelsior College',
+	treatment = ec_retention_tab['TRUE','TRUE'],
+	control = ec_retention_tab['FALSE','TRUE'],
+	statistic = unname(chi.ec_retention$statistic),
+	p = chi.ec_retention$p.value
+))
+
 # Students who attended orientation
 daacs.ec2$Retained <- daacs.ec2$CreditsAttempted_Term2 > 0 |
 	( !is.na(daacs.ec2$Time_to_Graduate) & daacs.ec2$Time_to_Graduate >= 365.25 )
-table(daacs.ec2$Treat, daacs.ec2$CreditsAttempted_Term2 > 0, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
-( chi.ec_retention <- chisq.test(daacs.ec2$Treat, 
+ec_orientation_retention_tab <- table(daacs.ec2$Treat, daacs.ec2$CreditsAttempted_Term2 > 0, useNA = 'ifany')|>
+	print() |> prop.table(1)
+( chi.ec_retention2 <- chisq.test(daacs.ec2$Treat, 
 								 daacs.ec2$Retained, 
 								 correct = FALSE) )
 
+results_table <- rbind(results_table, data.frame(
+	outcome = 'Retention',
+	group = 'Students who attended orientation',
+	institution = 'Excelsior College',
+	treatment = ec_orientation_retention_tab['TRUE','TRUE'],
+	control = ec_orientation_retention_tab['FALSE','TRUE'],
+	statistic = unname(chi.ec_retention2$statistic),
+	p = chi.ec_retention2$p.value
+))
+
 ########## WGU
-table(daacs.wgu$Treat, daacs.wgu$OnTime_Term1, useNA = 'ifany')%>%
-	print() %>% prop.table(1)
+wgu_term1_tab <- table(daacs.wgu$Treat, daacs.wgu$OnTime_Term1, useNA = 'ifany')|>
+	print() |> prop.table(1)
 ( chi.wgu1 <- chisq.test(daacs.wgu$Treat, daacs.wgu$OnTime_Term1, correct = FALSE) )
 
-table(daacs.wgu$Treat, daacs.wgu$OnTime_Term2, useNA = 'ifany') %>%
-	print() %>% prop.table(1)
+wgu_term2_tab <- table(daacs.wgu$Treat, daacs.wgu$OnTime_Term2, useNA = 'ifany') |>
+	print() |> prop.table(1)
 ( chi.wgu2 <- chisq.test(daacs.wgu$Treat, daacs.wgu$OnTime_Term2, correct = FALSE) )
 
-# chisq.test(daacs.wgu$Treat, daacs.wgu$CreditsEarned_Term2 >= 9)
+results_table <- rbind(results_table, data.frame(
+	outcome = 'On-Time Progress',
+	group = 'All Students',
+	institution = 'Western Governors University',
+	treatment = wgu_term1_tab['TRUE','TRUE'],
+	control = wgu_term1_tab['FALSE','TRUE'],
+	statistic = unname(chi.wgu1$statistic),
+	p = chi.wgu1$p.value
+))
 
+# Success rate
 ( ttest.wgu_term1 <- t.test(CreditRatio_Term1 ~ Treat, data = daacs.wgu) )
 ( ttest.wgu_term2 <- t.test(CreditRatio_Term2 ~ Treat, data = daacs.wgu) )
+
+results_table <- rbind(results_table, data.frame(
+	outcome = 'Success Rate',
+	group = 'All Students',
+	institution = 'Western Governors University',
+	treatment = unname(ttest.wgu_term1$estimate[2]),
+	control = unname(ttest.wgu_term1$estimate[1]),
+	statistic = unname(ttest.wgu_term1$statistic),
+	p = ttest.wgu_term1$p.value
+))
+
+# Retention
+wgu_retention_tab <- table(daacs.wgu$Treat, daacs.wgu$CreditsAttempted_Term2 > 0, useNA = 'ifany')|>
+	print() |> prop.table(1)
+( chi.wgu.retention <- chisq.test(daacs.wgu$Treat, daacs.wgu$CreditsAttempted_Term2 > 0, correct = FALSE) )
+
+results_table <- rbind(results_table, data.frame(
+	outcome = 'Retention',
+	group = 'All Students',
+	institution = 'Western Governors University',
+	treatment = wgu_retention_tab['TRUE','TRUE'],
+	control = wgu_retention_tab['FALSE','TRUE'],
+	statistic = unname(chi.wgu.retention$statistic),
+	p = chi.wgu.retention$p.value
+))
+
+
+results_table2 <- merge(
+	results_table[results_table$institution == 'Excelsior College',-3],
+	results_table[results_table$institution == 'Western Governors University',-3],
+	by = c('outcome', 'group'),
+	all = TRUE,
+	suffixes = c('_EC', '_WGU')
+)
+results_table2
+
+write.csv(results_table2, 
+		  file = 'Tables/Intent-to-Treat.csv', 
+		  row.names = FALSE,
+		  na = '')
 
 ##### Figures ##################################################################
 ########## EC
@@ -311,7 +428,7 @@ p.wgu.ontime1 <- ggplot(tab.wgu, aes(x = group1, y = mean,
 		'Western Governors University') +	
 	theme_minimal()
 p.wgu.ontime1
-ggsave('Figures/WGU_OnTime_Term1.png', width = fig.width, heigth = fig.height)
+ggsave('Figures/WGU_OnTime_Term1.png', width = fig.width, height = fig.height)
 
 tab.wgu.overall <- describeBy(daacs.wgu$OnTime_Term1, group = daacs.wgu$Treat, 
 							  mat = TRUE, skew = FALSE) #Term1 outcome variable

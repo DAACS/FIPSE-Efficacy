@@ -6,8 +6,6 @@ library(plyr)
 library(reshape2)
 library(ltm)
 library(PSAgraphics)
-# install.packages("https://cran.r-project.org/src/contrib/Archive/eefAnalytics/eefAnalytics_1.0.6.tar.gz", repos = NULL, type = "source")
-# library(eefAnalytics)
 
 source('R/DataSetup.R')
 
