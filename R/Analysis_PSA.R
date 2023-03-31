@@ -37,8 +37,7 @@ ec.ps.formu <- Complier ~ Age + MilitaryStudent + ENGLISH_LANGUAGE_NATIVE +
 	ETHNICITY + INCOME_RANGE_CODE + DIVISION_CODE +
 	Initial_TRANSFER_CREDITS_EARNED
 
-daacs.ec.complete$Retained <- daacs.ec.complete$CreditsAttempted_Term2 > 0 |
-	( !is.na(daacs.ec.complete$Time_to_Graduate) & daacs.ec.complete$Time_to_Graduate >= 365.25 )
+daacs.ec.complete$Retained <- daacs.ec.complete$CreditsAttempted_Term2 > 0 | !is.na(daacs.ec.complete$Time_to_Graduate)
 
 daacs.wgu.complete$Retained <- daacs.wgu.complete$CreditsAttempted_Term2 > 0
 

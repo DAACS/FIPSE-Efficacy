@@ -103,8 +103,7 @@ results_table <- rbind(results_table, data.frame(
 
 ##### Retention
 # All students
-daacs.ec$Retained <- daacs.ec$CreditsAttempted_Term2 > 0 |
-	( !is.na(daacs.ec$Time_to_Graduate) & daacs.ec$Time_to_Graduate >= 365.25 )
+daacs.ec$Retained <- daacs.ec$CreditsAttempted_Term2 > 0 | !is.na(daacs.ec$Time_to_Graduate)
 ec_retention_tab <- table(daacs.ec$Treat, daacs.ec$CreditsAttempted_Term2 > 0, useNA = 'ifany')|>
 	print() |> prop.table(1)
 ( chi.ec_retention <- chisq.test(daacs.ec$Treat, 
@@ -122,8 +121,7 @@ results_table <- rbind(results_table, data.frame(
 ))
 
 # Students who attended orientation
-daacs.ec2$Retained <- daacs.ec2$CreditsAttempted_Term2 > 0 |
-	( !is.na(daacs.ec2$Time_to_Graduate) & daacs.ec2$Time_to_Graduate >= 365.25 )
+daacs.ec2$Retained <- daacs.ec2$CreditsAttempted_Term2 > 0 | !is.na(daacs.ec2$Time_to_Graduate)
 ec_orientation_retention_tab <- table(daacs.ec2$Treat, daacs.ec2$CreditsAttempted_Term2 > 0, useNA = 'ifany')|>
 	print() |> prop.table(1)
 ( chi.ec_retention2 <- chisq.test(daacs.ec2$Treat, 
