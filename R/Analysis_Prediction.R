@@ -107,7 +107,7 @@ lr.out1.wgu  <- glm(OnTime_Year1 ~ + #log10(srl_time) + #cluster +
 summary(lr.out1.wgu )
 
 
-##### Piecewise Regression(or whatever we are calling it)
+##### Piecewise Regression (or whatever we are calling it)
 
 library(mice)
 cols <- c('INCOME_RANGE_CODE', "EMPLOYMENT_LVL_CODE",

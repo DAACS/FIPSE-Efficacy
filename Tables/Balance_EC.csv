@@ -1,0 +1,25 @@
+"rowname","stES_unadjnoncomplier","stES_adjnoncomplier","stES_unadjcontrol","stES_adjcontrol"
+"Age",0.05,0.01,0,0.02
+"DIVISION_CODE_BU",0.02,0,0.01,0.01
+"DIVISION_CODE_HS",0.04,0,0.02,0
+"DIVISION_CODE_LA",0.06,0.01,0.02,0.01
+"DIVISION_CODE_NU",0.01,0.01,0.06,0.05
+"DIVISION_CODE_PS",0.01,0,0.05,0.05
+"DIVISION_CODE_TE",0.05,0,0.01,0.03
+"EMPLOYMENT_STATUS_Full-Time",0.04,0,0.02,0
+"EMPLOYMENT_STATUS_Part-Time",0.01,0,0.04,0.04
+"EMPLOYMENT_STATUS_Unemployed",0.04,0.01,0.01,0.02
+"ENGLISH_LANGUAGE_NATIVE",0.09,0.02,0.06,0.03
+"ETHNICITY_American Indian or Alaska Native",0.06,0.04,0.04,0.03
+"ETHNICITY_Asian",0.07,0.02,0.13,0.1
+"ETHNICITY_Black or African American",0.06,0,0.08,0.05
+"ETHNICITY_Hispanic",0.03,0,0.04,0.03
+"ETHNICITY_Native Hawaiian or Other Pacific Islander",0.01,0,0.02,0.02
+"ETHNICITY_Two or more races",0.04,0,0.03,0
+"ETHNICITY_Unknown",0.02,0,0,0.01
+"ETHNICITY_White",0.03,0.01,0.04,0.03
+"First_Generation",0.03,0.01,0,0.02
+"GENDER_FEMALE",0.03,0.01,0.01,0
+"INCOME_RANGE_CODE",0.01,0,0.05,0.04
+"Initial_TRANSFER_CREDITS_EARNED",0.09,0,0.06,0.02
+"MilitaryStudent_TRUE",0.12,0,0.07,0.01
