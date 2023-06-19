@@ -11,8 +11,8 @@ errorbar.cv <- 1 # Multiplier for the standard error bars.
 # Retention was reported since it was an outcome in the grant proposal.
 
 # This will separate out students who attended orientation. This effects but
-# treatment and control groups and descriptives suggest students who did not 
-# attempt orienation are statistically equivelent on key demographics.
+# treatment and control groups and descriptive statistics suggest students who
+# did not attempt orientation are statistically equivalent on key demographics.
 ec.completed.orientation <- daacs.ec$TreatLevels %in%
 	c('Control-CCS100', # Control students who attempted orientation
 	  'Assessment Only', # Treatment students that completed the assessments
