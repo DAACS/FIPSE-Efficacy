@@ -26,7 +26,8 @@ results_table <- data.frame(
 	treatment = numeric(),
 	control = numeric(),
 	statistic = numeric(),
-	p = numeric()
+	p = numeric(),
+	effect_size = numeric() # Cohen's d or Phi coefficient
 )
 
 ###### Research Question #1: Overall Effects ###################################
@@ -45,7 +46,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = ec_all_term1_tab['TRUE','TRUE'],
 	control = ec_all_term1_tab['FALSE','TRUE'],
 	statistic = unname(chi.ec_term1$statistic),
-	p = chi.ec_term1$p.value
+	p = chi.ec_term1$p.value,
+	effect_size = sqrt(unname(chi.ec_term1$statistic) / nrow(daacs.ec))
 ))
 
 
@@ -60,7 +62,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = ec_orientation_term1_tab['TRUE','TRUE'],
 	control = ec_orientation_term1_tab['FALSE','TRUE'],
 	statistic = unname(chi.ec2_term1$statistic),
-	p = chi.ec2_term1$p.value
+	p = chi.ec2_term1$p.value,
+	effect_size = sqrt(unname(abs(chi.ec2_term1$statistic)) / nrow(daacs.ec2))
 ))
 
 
@@ -88,7 +91,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = unname(ttest.ec_term1$estimate[2]),
 	control = unname(ttest.ec_term1$estimate[1]),
 	statistic = unname(ttest.ec_term1$statistic),
-	p = ttest.ec_term1$p.value
+	p = ttest.ec_term1$p.value,
+	effect_size = diff(as.numeric(ttest.ec_term1$estimate)) / sd(daacs.ec$CreditRatio_Term1)
 ))
 
 results_table <- rbind(results_table, data.frame(
@@ -98,7 +102,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = unname(ttest.ec2_term1$estimate[2]),
 	control = unname(ttest.ec2_term1$estimate[1]),
 	statistic = unname(ttest.ec2_term1$statistic),
-	p = ttest.ec2_term1$p.value
+	p = ttest.ec2_term1$p.value,
+	effect_size = diff(as.numeric(ttest.ec2_term1$estimate)) / sd(daacs.ec2$CreditRatio_Term1)
 ))
 
 ##### Retention
@@ -117,7 +122,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = ec_retention_tab['TRUE','TRUE'],
 	control = ec_retention_tab['FALSE','TRUE'],
 	statistic = unname(chi.ec_retention$statistic),
-	p = chi.ec_retention$p.value
+	p = chi.ec_retention$p.value,
+	effect_size = sqrt(unname(abs(chi.ec_retention$statistic)) / nrow(daacs.ec))
 ))
 
 # Students who attended orientation
@@ -135,7 +141,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = ec_orientation_retention_tab['TRUE','TRUE'],
 	control = ec_orientation_retention_tab['FALSE','TRUE'],
 	statistic = unname(chi.ec_retention2$statistic),
-	p = chi.ec_retention2$p.value
+	p = chi.ec_retention2$p.value,
+	effect_size = sqrt(unname(abs(chi.ec_retention2$statistic)) / nrow(daacs.ec2))
 ))
 
 ########## WGU
@@ -154,7 +161,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = wgu_term1_tab['TRUE','TRUE'],
 	control = wgu_term1_tab['FALSE','TRUE'],
 	statistic = unname(chi.wgu1$statistic),
-	p = chi.wgu1$p.value
+	p = chi.wgu1$p.value,
+	effect_size = sqrt(unname(abs(chi.wgu1$statistic)) / nrow(daacs.wgu))
 ))
 
 # Success rate
@@ -168,7 +176,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = unname(ttest.wgu_term1$estimate[2]),
 	control = unname(ttest.wgu_term1$estimate[1]),
 	statistic = unname(ttest.wgu_term1$statistic),
-	p = ttest.wgu_term1$p.value
+	p = ttest.wgu_term1$p.value,
+	effect_size = diff(as.numeric(ttest.wgu_term1$estimate)) / sd(daacs.wgu$CreditRatio_Term1)
 ))
 
 # Retention
@@ -183,7 +192,8 @@ results_table <- rbind(results_table, data.frame(
 	treatment = wgu_retention_tab['TRUE','TRUE'],
 	control = wgu_retention_tab['FALSE','TRUE'],
 	statistic = unname(chi.wgu.retention$statistic),
-	p = chi.wgu.retention$p.value
+	p = chi.wgu.retention$p.value,
+	effect_size = sqrt(unname(abs(chi.wgu.retention$statistic)) / nrow(daacs.wgu))
 ))
 
 
