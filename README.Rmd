@@ -6,18 +6,21 @@ editor_options:
 
 # The Efficacy and Predictive Power of the Diagnostic Assessment and Achievement of College Skills on Academic Success Indicators
 
-Jason M. Bryer<sup>1</sup>, Heidi L. Andrade<sup>2</sup>, Timothy J.
-Cleary<sup>3</sup>, Angela M. Lui<sup>1</sup>, David W. Franklin
-Jr.<sup>1</sup>, and Diana Akhmedjanova<sup>2</sup>
+[Jason M. Bryer](mailto:jason.bryer@cuny.edu)<sup>1</sup>, [Heidi L. Andrade](mailto:handrade@albany.edu)<sup>2</sup>, [Timothy J.
+Cleary](mailto:timothy.cleary@rutgers.edu)<sup>3</sup>, [Angela M. Lui](mailto:angela.lui@cuny.edu)<sup>1</sup>, [David W. Franklin
+Jr.](mailto:david.franklin@cuny.edu)<sup>1</sup>, and [Diana Akhmedjanova](mailto:diakhmedjanova@gmail.com)<sup>2</sup>
 
 <sup>1</sup> City University of New York, New York, New York.  
 <sup>2</sup> University at Albany, State University of New York, Albany, New York   
 <sup>3</sup> Rutgers, The State University of New Jersey, New
 Brunswick, New Jersey
 
+
+[Click here for preprint manuscript](manuscript/DAACS-Efficacy.pdf). Forthcoming in [Educational Technology Research and Development](https://link.springer.com/journal/11423) journal.
+
 ## Abstract
 
-The purpose of this study was to examine the effects and predictive power of the Diagnostic Assessment and Achievement of College Skills (DAACS) on student success. DAACS is an open-source diagnostic assessment tool designed to measure newly enrolled college students' reading, writing, mathematics, and self-regulated learning skills, and to provide individualized feedback and learning resources that students can use to become better prepared for college. A randomized control trial was performed at two online colleges (n = 23,467) to test the effects of DAACS on credit acquisition and retention. The results showed that DAACS did not have an effect on students who only took the assessments but was helpful to students who used the feedback and resources: Students who not only took the assessments but also accessed DAACS feedback and the links to OERs were significantly more likely to earn credits and complete their first six months of coursework on time. They also had higher term-to-term retention rates than the students who only took the assessments. In addition, an examination of the predictive power of DAACS indicated that DAACS data significantly strengthen predictions of student performance.
+The purpose of this study was to examine the effects and predictive power of the Diagnostic Assessment and Achievement of College Skills (DAACS) on student success. DAACS is an open-source diagnostic assessment tool designed to measure newly enrolled college students’ reading, writing, mathematics, and self-regulated learning skills, and to provide individualized feedback and learning resources that students can use to become better prepared for college. A randomized control trial was performed at two online colleges (n = 23,467) to test the effects of DAACS on credit acquisition and retention. The results indicate an overall null effect of treatment, but post hoc analyses reveal two important findings: 1) Students who not only received the assessment results but also accessed the feedback were significantly more likely to earn credits and be retained for a second term than students who only accessed the assessment results; 2) some students who only accessed the assessment results without reading the feedback, particularly those with low scores on the assessments, low self-efficacy, or high test anxiety, had worse outcomes than the control group. We speculate that feedback mitigates the potentially negative effects of testing on student success. In addition, an examination of the predictive power of DAACS indicated that DAACS data significantly strengthen predictions of academic outcomes.
 
 **Keywords**: college readiness, diagnostic assessment, remediation, predicting student success, developmental education
 
@@ -27,9 +30,11 @@ The purpose of this study was to examine the effects and predictive power of the
 
 **Ethics Approval and Consent**: The authors assert that approval was obtained from an ethics review board (IRB) at Excelsior College in Albany, NY, and Western Governors University in Salt Lake City, Utah. Consent was obtained from participants of the study.
 
-**Data, Materials and/or Code Availability**: Prior to publication all code used to conduct the analysis in R will be made publicly available at <https://github.com/DAACS/FIPSE-Efficacy>. Data will be made available to qualified researchers who sign a data sharing agreement.
+**Data, Materials and/or Code Availability**: Analysis scripts and supplemental materials are available at [https://github.com/daacs/FIPSE-Efficacy](https://github.com/daacs/FIPSE-Efficacy).
 
-**Author Contributions**: The first three authors contributed to the study conception and design. All authors contributed to material preparation. Data collection and analysis were performed by Jason Bryer, Angela Lui, and David Franklin. All authors contributed to the writing of the first draft of the manuscript, commented on previous versions of the manuscript, and read and approved the final manuscript.
+**Author Contributions**: The first three authors contributed to the study conception and design. All authors contributed to material preparation. Data collection and analysis were performed by Jason Bryer and Angela Lui. All authors contributed to the writing of the first draft of the manuscript, commented on previous versions of the manuscript, and read and approved the final manuscript.
+
+**Acknowledgements**: We would like to thank the faculty, staff, and students at Excelsior College and Western Governors University who participated in this study. We would also like to acknowledge our advisory committee members who provided valuble resources and feedback on the DAACS system. List of past and current adivors is available at [https://daacs.net/about/](https://daacs.net/about/).
 
 ## Repository Structure
 

@@ -4,10 +4,11 @@ library(psych)
 source('R/merge.mids.R')
 
 set.seed(2112)
+mice_seed = 2112
 
 # Load DAACS data
-load('data/DAACS-EC.rda')
-load('data/DAACS-WGU.rda')
+load('data-raw/DAACS-EC.rda')
+load('data-raw/DAACS-WGU.rda')
 
 completion.threshold <- 240 # in seconds
 feedback.threshold <- 10
@@ -153,7 +154,7 @@ ec.cols <- c('Age', 'MilitaryStudent', 'ENGLISH_LANGUAGE_NATIVE',
 			 	'Initial_TRANSFER_CREDITS_EARNED')
 
 
-ec.mice.out <- mice(daacs.ec[,ec.cols], m = 1)
+ec.mice.out <- mice(daacs.ec[,ec.cols], m = 1, seed = mice_seed)
 daacs.ec.complete <- merge(ec.mice.out, daacs.ec, shadow.matrix = TRUE)
 
 ##### Setup WGU
@@ -215,6 +216,6 @@ daacs.wgu[which(daacs.wgu$Treat & daacs.wgu$AdvisorUsed &
 wgu.cols <- c("Age", "MilitaryStudent", "CITIZENSHIP_STATUS", "EMPLOYMENT_STATUS",
 			  "FIRST_GEN_STUDENT", "GENDER", "ETHNICITY2", "HOUSEHOLD_INCOME",
 			  "CURRENT_PROGRAM_CODE", "TRANSFER_CREDITS")
-wgu.mice.out <- mice(daacs.wgu[,wgu.cols], m = 1)
+wgu.mice.out <- mice(daacs.wgu[,wgu.cols], m = 1, seed = mice_seed)
 daacs.wgu.complete <- merge(wgu.mice.out, daacs.wgu, shadow.matrix = TRUE)
 
