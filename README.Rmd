@@ -16,7 +16,7 @@ Jr.](mailto:david.franklin@cuny.edu)<sup>1</sup>, and [Diana Akhmedjanova](mailt
 Brunswick, New Jersey
 
 
-[Click here for preprint manuscript](manuscript/DAACS-Efficacy.pdf). Forthcoming in [Educational Technology Research and Development](https://link.springer.com/journal/11423) journal.
+[Click here for preprint manuscript](https://github.com/DAACS/FIPSE-Efficacy/blob/main/Manuscript/DAACS-Efficacy.pdf). Forthcoming in [Educational Technology Research and Development](https://link.springer.com/journal/11423) journal.
 
 ## Abstract
 

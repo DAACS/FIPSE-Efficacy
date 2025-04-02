@@ -14,7 +14,8 @@ New York
 <sup>3</sup> Rutgers, The State University of New Jersey, New Brunswick,
 New Jersey
 
-[Click here for preprint manuscript](manuscript/DAACS-Efficacy.pdf).
+[Click here for preprint
+manuscript](https://github.com/DAACS/FIPSE-Efficacy/blob/main/Manuscript/DAACS-Efficacy.pdf).
 Forthcoming in [Educational Technology Research and
 Development](https://link.springer.com/journal/11423) journal.
 
